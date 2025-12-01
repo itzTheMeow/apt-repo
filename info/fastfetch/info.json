@@ -1,0 +1,23 @@
+{
+  "name": "fastfetch",
+  "tagline": "Fastfetch built for iOS.",
+  "desc": "Fastfetch built for iOS. Removes a lot of the modules that aren't supported on iOS.",
+  "links": [
+    {
+      "name": "Source",
+      "url": "https://github.com/itzTheMeow/apt-repo/tree/master/builders/fastfetch"
+    },
+    {
+      "name": "Upstream",
+      "url": "https://github.com/fastfetch-cli/fastfetch"
+    }
+  ],
+  "screenshots": [],
+  "changelog": [
+    {
+      "version": "2.55.1",
+      "date": "November 30th, 2025",
+      "changes": "- Built fastfetch v2.55.1"
+    }
+  ]
+}
