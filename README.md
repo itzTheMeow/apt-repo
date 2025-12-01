@@ -1,60 +1,28 @@
-# WilsontheWolf's Repo
-To view the repo go [here](https://wilsonthewolf.github.io/repo/)!
+# Meow's Repo
+
+To view the repo go [here](https://apt.xela.codes)!
+
+This is a slightly modified version of [WilsontheWolf's Repo](https://github.com/WilsontheWolf/repo). Check it out for more information.
 
 # Building
-To build the repo you need either;
-1. [A linux machine with apt (debian/ubuntu) (wsl works too)](#building-natively)
-2. [A system with docker on it](#building-with-docker)
 
-## Building natively
-On a system with apt you need the following;
-`nodejs`, `git`, `apt-utils`
-
-On these systems you can get node via [nodesource](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions). Node LTS (v16.x as of writing) is recommended.
-
-You can install `git` and `apt-utils` using the following:
-```sh
-sudo apt update 
-sudo apt install git apt-utils
-```
-Now clone the repo
-```sh
-git clone https://github.com/WilsontheWolf/repo
-cd repo
-```
-
-Next install dependencies
-```sh
-npm i # or yarn
-```
-
-Now you can run `npm run build` or `yarn build` to build the project.
-
-Afterwords continue onto [Setup the Repo](#setup-the-repo).
-
-# Building with docker
-To build with docker first make sure `docker` and `git` is installed.
-First clone the repo 
-```sh
-git clone https://github.com/WilsontheWolf/repo
-cd repo
-```
-Afterwords all you have to do is run `./docker-build.sh` to build.
-This will handle all your dependencies and build the project for you.
+Building is handled by github actions. Just set your github pages settings to be deployed with GitHub Actions.
 
 Afterwords continue onto [Setup the Repo](#setup-the-repo).
 
 # Setup the Repo
+
 There is a file called `config.json`.
 This file has config values to modify your repo with.
 
 Here is an example.
+
 ```json
 {
-    "name": "My Cool Repo",
-    "base": "/",
-    "url": "https://example.com/",
-    "desc": "My repo."
+  "name": "My Cool Repo",
+  "base": "/",
+  "url": "https://example.com/",
+  "desc": "My repo."
 }
 ```
 
@@ -67,42 +35,44 @@ The url is the full url to your repo. This is used for package manager links and
 The desc is used for metadata for your repo.
 
 # Adding and Modifying Packages
+
 To add/update packages first add the debian file to the `debs` folder.
 
 Doing this automatically adds the deb to the repo on next build. However, this won't add data for the depictions. It will try to infer as much as it can from the package to make an ok depiction.
 
 To add data to the depictions, make a folder with the name of the package id in the `info` folder.
 
-Then make a file in that folder named `info.json`. 
+Then make a file in that folder named `info.json`.
 
-From here we can add values. Here is what a fully populated info looks like. 
+From here we can add values. Here is what a fully populated info looks like.
+
 ```json
 {
-    "name": "My Tweak",
-    "tagline": "My cool tweak!",
-    "desc": "This is my cool tweak. Its pretty cool!",
-    "banner": {
-        "text": "I am important read me!",
-        "color": "red"
+  "name": "My Tweak",
+  "tagline": "My cool tweak!",
+  "desc": "This is my cool tweak. Its pretty cool!",
+  "banner": {
+    "text": "I am important read me!",
+    "color": "red"
+  },
+  "screenshots": [
+    {
+      "name": "image.png",
+      "accessibilityText": "Describe the image."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.0.2",
+      "date": "March 10, 2022",
+      "changes": "- The tweak is now 101% cooler."
     },
-    "screenshots": [
-        {
-            "name": "image.png",
-            "accessibilityText": "Describe the image."
-        }
-    ],
-    "changelog": [
-        {
-            "version": "0.0.2",
-            "date": "March 10, 2022",
-            "changes": "- The tweak is now 101% cooler."
-        },
-        {
-            "version": "0.0.1",
-            "date": "March 5, 2022",
-            "changes": "- Initial Release"
-        }
-    ]
+    {
+      "version": "0.0.1",
+      "date": "March 5, 2022",
+      "changes": "- Initial Release"
+    }
+  ]
 }
 ```
 
@@ -110,7 +80,7 @@ Please note that every field is optional and will attempt to either infer a valu
 
 The changelog should always have the newest version on top to prevent issues.
 
-Images need to be placed in a folder called `screenshots` in the folder with the info. 
+Images need to be placed in a folder called `screenshots` in the folder with the info.
 
 The description and changes in the changelog support markdown.
 
